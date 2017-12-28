@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @voyage.title %>
+</p>
+
+<p>
+  <strong>Cover:</strong>
+  <%= @voyage.cover %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @voyage.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @voyage.user %>
+</p>
+
+<%= link_to 'Edit', edit_voyage_path(@voyage) %> |
+<%= link_to 'Back', voyages_path %>
