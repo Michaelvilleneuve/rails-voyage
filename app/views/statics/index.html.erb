@@ -1,14 +1,17 @@
 <section class="home">
     <div class="home-login">
-        <h1>Voyages</h1>
-        <p>Bienvenue sur voyage</p>
-        <%= form_for(:user, :url => session_path(:user)) do |f| %>
-            <%= f.text_field :email %>
-            <%= f.password_field :password %>
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-            <%= f.submit 'Sign in' %>
-            <%= link_to "Forgot your password?", new_password_path(:user) %>
-        <% end %>
+        <div class="form-container">
+            <h1>Voyages</h1>
+            <%= form_for(:user, url: session_path(:user)) do |f| %>
+                <%= f.text_field :email, placeholder: 'E-mail', class: 'input' %>
+                <%= f.password_field :password, placeholder: 'Mot de passe', class: 'input' %>
+                <button class="button" type="submit">
+                    Se connecter
+                </button>
+            <% end %>
+        </div>
     </div>
+    <footer>
+        <%= link_to "S'enregistrer", new_user_registration_path, class: 'button' %>
+    </footer>
 </section>
