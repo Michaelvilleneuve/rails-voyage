@@ -17,7 +17,7 @@
     <% @voyages.each do |voyage| %>
       <tr>
         <td><%= voyage.title %></td>
-        <td><%= voyage.cover %></td>
+        <td><%= image_tag voyage.cover.url(:medium) %></td>
         <td><%= voyage.description %></td>
         <td><%= voyage.user %></td>
         <td><%= link_to 'Show', voyage %></td>

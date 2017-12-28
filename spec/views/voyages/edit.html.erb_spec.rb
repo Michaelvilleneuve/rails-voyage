@@ -4,7 +4,7 @@ RSpec.describe "voyages/edit", type: :view do
   before(:each) do
     @voyage = assign(:voyage, Voyage.create!(
       :title => "MyString",
-      :cover => "MyString",
+      :cover => File.new(Rails.root + 'spec/fixtures/photos/example.jpg'),
       :description => "MyString",
       :user => FactoryBot.create(:user)
     ))
