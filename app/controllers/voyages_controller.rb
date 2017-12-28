@@ -1,5 +1,6 @@
 class VoyagesController < ApplicationController
-  before_action :set_voyage, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show]
+  before_action :set_voyage, only: [:edit, :update, :destroy]
 
   # GET /voyages
   # GET /voyages.json
@@ -10,6 +11,7 @@ class VoyagesController < ApplicationController
   # GET /voyages/1
   # GET /voyages/1.json
   def show
+    @voyage = Voyage.find(params[:id])
   end
 
   # GET /voyages/new
@@ -24,7 +26,7 @@ class VoyagesController < ApplicationController
   # POST /voyages
   # POST /voyages.json
   def create
-    @voyage = Voyage.new(voyage_params)
+    @voyage = current_user.voyages.new(voyage_params)
 
     respond_to do |format|
       if @voyage.save
@@ -64,11 +66,11 @@ class VoyagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_voyage
-      @voyage = Voyage.find(params[:id])
+      @voyage = current_user.voyages.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def voyage_params
-      params.require(:voyage).permit(:title, :cover, :description, :user_id)
+      params.require(:voyage).permit(:title, :cover, :description)
     end
 end

@@ -6,7 +6,7 @@ RSpec.describe "voyages/edit", type: :view do
       :title => "MyString",
       :cover => "MyString",
       :description => "MyString",
-      :user => nil
+      :user => FactoryBot.create(:user)
     ))
   end
 
